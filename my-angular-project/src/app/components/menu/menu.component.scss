@@ -1,0 +1,38 @@
+.menu{
+    margin: 0px;
+    width: 273px;
+    background: var(--ETP_Grey-dark, #666F78);
+    height: 100%;
+
+
+    .vtb{
+        height: 97px;
+        border-bottom: 1px solid #C4C4C4;;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .conteinerText{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            p{
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 26px;
+                margin: 0px;
+                color: #fff;
+            }
+            .bank{
+                color: #E5E5E5;
+            }
+        }
+        .openMenu{
+            height: 18px;
+            background: var(--ETP_Grey-dark, #666F78);
+            border: none;
+            cursor: pointer;
+        }
+    }
+   
+}

@@ -1,0 +1,21 @@
+
+<nav>
+    <div>
+        <button class="user">
+            <img src="assets/png/user.png" alt="">
+        </button>
+    </div>
+    <div class="userData">
+        <p class="userName">Иванов</p>
+        <p class="status">Администратор</p>
+    </div>
+    <button class="menu" mat-button [matMenuTriggerFor]="menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M5 7.5L12 7.5L8.5 11.5L5 7.5Z" fill="white"/>
+        </svg>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
+</nav>

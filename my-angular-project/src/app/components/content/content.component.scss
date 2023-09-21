@@ -1,0 +1,97 @@
+.contents{
+    padding-top: 40px;
+    padding-left: 24px;
+    padding-right: 40px;
+    .exit{
+        color: var(--ETP_Grey-dark, #666F78);
+        border: none;
+        background: var(--ETP_Grey-extra-light, #F5F6F7);
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+       
+    }
+    .btnFunction{
+        display: flex;
+        justify-content: space-between;   
+        button{
+            margin-right: 24px;
+        }
+    }
+    .example-form {
+        min-width: 150px;
+        width: 100%;
+        border-radius: 8px;
+        background: #FFF;
+        box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.05);
+        button{
+            margin-right: 24px;
+        }
+        p{
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 20px;
+        }
+        .table{
+            width: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
+        .mat-mdc-form-field{
+            display: flex;
+        }
+        .text{
+            padding-top: 30px;
+            padding-left: 40px;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 24px;
+        }
+      }
+      .getForm{
+        background-color: #FFF;
+        button{
+          border: none;
+          background-color: #fff;
+          cursor: pointer;
+        }
+      }
+      .example-full-width {
+        width: 100%;
+      }
+      
+      td {
+        padding-right: 8px;
+      }
+      table {
+        text-align: left;
+        position: relative;
+        border-collapse: collapse; 
+      }
+      th, td {
+        padding: 0.25rem;
+      }
+      tr.red th {
+        background: red;
+        color: white;
+      }
+      tr.green th {
+        background: green;
+        color: white;
+      }
+      tr.purple th {
+        background: purple;
+        color: white;
+      }
+      th {
+        background: white;
+        position: sticky;
+        top: 0; /* Don't forget this, required for the stickiness */
+        box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+      }
+      .mat-mdc-paginator-container{
+        justify-content: space-between;
+      }
+}

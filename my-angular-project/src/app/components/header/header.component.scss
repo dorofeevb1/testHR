@@ -1,0 +1,40 @@
+nav{
+    background: var(--ETP_Red, #DA2032);
+    display: flex;
+    height: 70px;
+    justify-content: end;
+    align-items: center;
+    .user{
+        border: none;
+        background-color: #DA2032;
+        img{
+            border: 1px solid rgba(251, 249, 250, 1);
+            border-radius: 100%;
+        }
+        
+    }
+    .userData{
+       padding-left: 6px;
+       padding-right: 6px;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 18px;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        .userName{
+            margin: 0px;
+        }
+        .status{
+            margin: 0px;
+            color: #E5E5E5;
+        }
+    }
+   
+    .menu{
+        background-color: #DA2032;
+        border: none;
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,166 @@
+<div class="contents">
+    <button class="exit"><img src="assets/png/arrow-left.png" alt="">Назад</button>
+    <h1>Настройка учетных записей сотрудников контрагента</h1>
+    <div class="btnFunction">
+        <div class="btns">
+            <button mat-raised-button color="warn">Добавить<mat-icon iconPositionEnd>add_circle_outline</mat-icon></button>
+            <button mat-raised-button color="warn">Разблокировать<mat-icon iconPositionEnd>check_circle_outline</mat-icon></button>
+            <button mat-raised-button color="warn">Заблокировать<mat-icon  iconPositionEnd>close</mat-icon></button>
+        </div>
+        <button mat-raised-button color="warn" (click)="showForm = !showForm"><mat-icon>filter_list</mat-icon>Фильтр</button>
+    </div>
+    <form class="example-form" *ngIf="showForm">
+        <p class="text">Фильтр</p>
+        <table class="example-full-width" cellspacing="0"><tr>
+          <td>
+            <p>login</p>
+            <mat-form-field class="example-full-width">
+              <mat-label>login</mat-label>
+              <input type="text" name="filter_name" matInput [(ngModel)]="nameFilterValue">
+              <button matSuffix mat-icon-button aria-label="Clear" (click)="clearInput('nameFilterValue')">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+          </td>
+          
+          <td>
+            <p>Телефон</p>
+            <mat-form-field class="example-full-width">
+              <mat-label>Telephone</mat-label>
+              <span matPrefix>+7&nbsp;</span>
+              <input type="tel" matInput placeholder="(555)-555-1234" [(ngModel)]="telephoneFilterValue" name="telephoneFilter">
+              <button matSuffix mat-icon-button aria-label="Clear" (click)="clearInput('telephoneFilterValue')">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+          </td>
+          <td> 
+            <p>Дата создания</p>
+            <mat-form-field>
+            <input matInput [matDatepicker]="dp" >
+            <mat-datepicker-toggle matSuffix [for]="dp">
+                <mat-icon matDatepickerToggleIcon><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8 4H4V8H8V4ZM14 4H10V8H14V4ZM16 4H20V8H16V4ZM8 10H4V14H8V10ZM10 10H14V14H10V10ZM8 16H4V20H8V16ZM10 16H14V20H10V16ZM20 10H16V14H20V10Z" fill="#A2A9B1"/>
+                    </svg></mat-icon>
+              </mat-datepicker-toggle>
+              <mat-datepicker #dp disabled="false"></mat-datepicker>
+          </mat-form-field></td>
+
+          <td>
+            <p>Статус</p>
+            <mat-form-field>
+                <mat-select>
+                  <mat-option value="one">Активен</mat-option>
+                  <mat-option value="two">Заблокирован</mat-option>
+                </mat-select>
+              </mat-form-field></td>
+          <td> 
+        </tr></table>
+
+        <table class="example-full-width" cellspacing="0"><tr>
+            <td> 
+                <p >Email</p>
+                <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com" [(ngModel)]="emailFilterValue">
+                <button  matSuffix mat-icon-button aria-label="Clear" (click)="clearInput('emailFilterValue')">
+                    <mat-icon>close</mat-icon>
+                </button >
+                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                    Недопустимые символы
+                </mat-error>
+                <mat-error *ngIf="emailFormControl.hasError('required')">
+                  Email is <strong>required</strong>
+                </mat-error>
+              </mat-form-field></td>
+
+            <td>
+                <p>Роль</p>
+                <mat-form-field>
+                    <mat-select>
+                      <mat-option value="thre">Пользователь</mat-option>
+                      <mat-option value="fo">Администратор</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </td>
+
+            <td>
+                 <p>Дата изменения</p>
+                <mat-form-field>
+                <input matInput [matDatepicker]="di" >
+                <mat-datepicker-toggle matSuffix [for]="di">
+                    <mat-icon matDatepickerToggleIcon><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M8 4H4V8H8V4ZM14 4H10V8H14V4ZM16 4H20V8H16V4ZM8 10H4V14H8V10ZM10 10H14V14H10V10ZM8 16H4V20H8V16ZM10 16H14V20H10V16ZM20 10H16V14H20V10Z" fill="#A2A9B1"/>
+                        </svg></mat-icon>
+                  </mat-datepicker-toggle>
+                  <mat-datepicker #di disabled="false"></mat-datepicker>
+              </mat-form-field></td>
+          </tr></table>
+          <div class="btns">
+            <button mat-raised-button color="warn">Применить</button>
+            <button mat-raised-button color="warn">Отмена</button>
+            <button mat-raised-button color="warn">Сбросить</button>
+          </div>
+      </form>
+      
+      <form class="getForm">
+        <mat-paginator [length]="jsonData.length" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page"> </mat-paginator>
+        <p>Sum: {{ sumOfSelectedUsers }}</p>
+        <table class="example-full-width">
+          <thead>
+            <tr class="red">
+              <th>Действия</th>
+              <th><input type="checkbox" (change)="selectAllCheckbox($event)"></th>
+              <th>Логин</th>
+              <th>E-mail</th>
+              <th>Телефон</th>
+              <th>Роли</th>
+              <th>Дата изменения</th>
+              <th>Дата создания</th>
+              <th>Статус</th>
+              <th>Наличие ЭП</th>
+            </tr>
+          </thead>
+          <tbody class="example-full-width">
+            <tr class="list" *ngFor="let user of jsonData">
+              <td><button><mat-icon>more_horiz</mat-icon></button></td>
+              <td><input type="checkbox" (change)="updateSelectedUsers($event, user)"></td>
+              <td>{{user.name}}</td>
+              <td>{{user.email}}</td>
+              <td>{{user.phone}}</td>
+              <td>{{user.is_admin ? 'Администратор' : 'Пользователь'}}</td>
+              <td>{{user.update_at | date:'MM.dd.yyyy'}}</td>
+              <td>{{user.create_at | date:'MM.dd.yyyy'}}</td>
+              <td>
+                <ng-container *ngIf="user.status; else removeText">
+                  <p style="color: var(--ETP_Drivers, #25B553);">Активен</p>
+                </ng-container>
+                <ng-template #removeText>
+                  <p style="color: var(--ETP_Error-red, #FF001F);">Заблокирован</p>
+                </ng-template>
+              </td>
+              <td>
+                <ng-container *ngIf="user.is_ecp; else removeImage">
+                  <img src="assets/png/check.png" alt="">
+                </ng-container>
+                <ng-template #removeImage>
+                  <img src="assets/png/remove.png" alt="">
+                </ng-template>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <mat-paginator 
+  [length]="jsonData.length"
+  [pageSize]="10" 
+  [pageSizeOptions]="[5, 10, 25, 100]"
+  aria-label="Select page"
+  itemsPerPageLabel="Количество элементов:"
+  nextPageLabel="Следующая страница"
+  previousPageLabel="Предыдущая страница"
+  firstPageLabel="Первая страница"
+  lastPageLabel="Последняя страница">
+</mat-paginator>
+       <p>Sum: {{ sumOfSelectedUsers }}</p>
+      </form>
+</div>
